@@ -1,0 +1,108 @@
+from selenium import webdriver
+# from webdriver_manager.chrome import ChromeDriverManager
+from time import sleep
+from selenium.webdriver.common.by import By
+
+class SauceDemoTest:
+    def usernamePasswordNotFilled(self):
+        driver = webdriver.Chrome()
+        driver.get("https://www.saucedemo.com")
+        sleep(5)
+        userNameInput = driver.find_element(By.ID,"user-name")
+        passwordInput = driver.find_element(By.ID,"password")
+        sleep(2)
+        userNameInput.send_keys("")
+        passwordInput.send_keys("")
+        sleep(2)
+        loginButton = driver.find_element(By.ID,"login-button")
+        sleep(1)
+        loginButton.click()
+        sleep(2)
+        errorMessage = driver.find_element(By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3")
+        testResult = errorMessage.text == "Epic sadface: Username is required"
+        print(f"TEST SONUCU: {testResult}")
+        sleep(10)
+
+    def justPasswordNotFilled(self):
+        driver = webdriver.Chrome()
+        driver.get("https://www.saucedemo.com")
+        sleep(5)
+        userNameInput = driver.find_element(By.ID,"user-name")
+        passwordInput = driver.find_element(By.ID,"password")
+        sleep(2)
+        userNameInput.send_keys("standard_user")
+        passwordInput.send_keys("")
+        sleep(2)
+        loginButton = driver.find_element(By.ID,"login-button")
+        sleep(1)
+        loginButton.click()
+        sleep(2)
+        errorMessage = driver.find_element(By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3")
+        testResult = errorMessage.text == "Epic sadface: Password is required"
+        print(f"TEST SONUCU: {testResult}")
+        sleep(10)
+
+    def userLockedOut(self):
+        driver = webdriver.Chrome()
+        driver.get("https://www.saucedemo.com")
+        sleep(5)
+        userNameInput = driver.find_element(By.ID,"user-name")
+        passwordInput = driver.find_element(By.ID,"password")
+        sleep(2)
+        userNameInput.send_keys("locked_out_user")
+        passwordInput.send_keys("secret_sauce")
+        sleep(2)
+        loginButton = driver.find_element(By.ID,"login-button")
+        sleep(1)
+        loginButton.click()
+        sleep(2)
+        errorMessage = driver.find_element(By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3")
+        testResult = errorMessage.text == "Epic sadface: Sorry, this user has been locked out."
+        print(f"TEST SONUCU: {testResult}")
+        sleep(10)
+
+    def usernamePasswordNotFilledRedCrossButton(self):
+        driver = webdriver.Chrome()
+        driver.get("https://www.saucedemo.com")
+        sleep(5)
+        userNameInput = driver.find_element(By.ID,"user-name")
+        passwordInput = driver.find_element(By.ID,"password")
+        sleep(2)
+        userNameInput.send_keys("")
+        passwordInput.send_keys("")
+        sleep(2)
+        loginButton = driver.find_element(By.ID,"login-button")
+        sleep(1)
+        loginButton.click()
+        sleep(2)
+        errorMessageUserRedCross = driver.find_element(By.XPATH,"//*[@id='user-name']")
+        errorMessagePasswordRedCross = driver.find_element(By.XPATH,"//*[@id='password']")
+        closeWarningMessage = driver.find_element(By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3/button")
+        closeWarningMessage.click()
+        testResult = (driver.find_element(By.XPATH,"//*[@id='user-name']") == None and driver.find_element(By.XPATH,"//*[@id='password']")== None)
+        print(f"TEST SONUCU: {testResult}")
+        sleep(10)
+
+    def goInventoryAdress(self):
+        driver = webdriver.Chrome()
+        driver.get("https://www.saucedemo.com")
+        sleep(5)
+        userNameInput = driver.find_element(By.ID,"user-name")
+        passwordInput = driver.find_element(By.ID,"password")
+        sleep(2)
+        userNameInput.send_keys("standard_user")
+        passwordInput.send_keys("secret_sauce")
+        sleep(2)
+        loginButton = driver.find_element(By.ID,"login-button")
+        sleep(1)
+        loginButton.click()
+        sleep(5)
+        driver.get("https://www.saucedemo.com/inventory.html")
+        inventoryItems = driver.find_elements(By.CLASS_NAME,"inventory_item")
+        testResult = (len(inventoryItems)==6)
+        print(f"TEST SONUCU: {testResult}")
+        sleep(10)
+       
+
+testSauceDemoTest = SauceDemoTest()
+testSauceDemoTest.usernamePasswordNotFilledRedCrossButton()
