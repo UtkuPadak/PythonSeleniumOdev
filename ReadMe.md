@@ -1,0 +1,7 @@
+![test-add-cart-button-click1](https://user-images.githubusercontent.com/127566165/229243494-985891ab-b6b5-4568-942d-59f48551b21f.png)
+![test-go-inventory-adress](https://user-images.githubusercontent.com/127566165/229243528-a38fb4c6-c82b-4572-81ff-74ad14914ff1.png)
+![test-just-password-not-filled](https://user-images.githubusercontent.com/127566165/229243538-84333494-f07f-4f8b-ac7c-8ed689e4cce5.png)
+![test-remove-button-click1](https://user-images.githubusercontent.com/127566165/229243541-eee44ea4-e46c-4754-80c4-d9a495b69aca.png)
+![test-user-locked-out](https://user-images.githubusercontent.com/127566165/229243546-268ae8c3-4384-4f7c-9c5e-f3ec1524cb1b.png)
+![test-username-password-not-filled](https://user-images.githubusercontent.com/127566165/229243550-b554a46f-158b-4641-8637-f4a48b824175.png)
+![test-username-password-not-filled-red-cross-button](https://user-images.githubusercontent.com/127566165/229243555-da63cb39-8fc0-4def-9738-e03708ecfdfc.png)
